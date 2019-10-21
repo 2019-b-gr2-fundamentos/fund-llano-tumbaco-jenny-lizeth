@@ -1,9 +1,18 @@
-var edad = 19; 
-let edad = 19;    
-const edad = 19;  
-const IVA = 12;
-IVA = 14; 
-let sueldo = 0;
-let IVA = 12;
-const IVA = 12;
-
+//Variables primitivas
+const numero = 10
+const decimal = 10.12;
+const respuesta TipoNumero = numero;
+console.log(typeof respuesta TipoNumero); 
+console.log(typeof decimal);
+//gestor de paquetes
+//de nodejs -> comunicarse con el repositorio -> descargar el "paquete"
+const letra = "a";
+const palabra = "palabra";
+console.log(typeof letra);
+console.log(typeof palabra);
+const hijos = null 
+console.log(typeof hijos);
+const casado = false;
+console.log(typeof casado);
+const fecha = new Date()
+console.log(typeof fecha);
