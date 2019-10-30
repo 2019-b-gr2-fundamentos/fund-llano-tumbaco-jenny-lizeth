@@ -62,3 +62,80 @@ if(casadoYMosero){
 //console.log("Llega tarde a clases")
 //}
 
+
+
+//ESTOS REPRESENTAN LOS FALSOS O VERDADEROS
+//TRUTY // string lleno
+
+const nombreVacio = -1;  
+if(-1){
+console.log("Truty");
+}else{
+console.log("Falsy"); 
+}
+
+const nombreVacio = "nombre";  
+if("nombre"){
+console.log("Truty");
+}else{
+console.log("Falsy"); 
+}
+
+//FALSY//string vacio
+
+const nombreVacio = 0;  
+if(0){
+console.log("Truty");
+}else{
+console.log("Falsy"); 
+}
+  
+if(undefined){
+console.log("Truty");
+}else{
+console.log("Falsy"); 
+}
+
+//  SWITCH
+const calculo = ""; //sumar restar multiplicar dividir
+switch(calculo){
+
+    case "sumar":
+    //code block
+      break;   //termina de comparar
+
+    case "restar":
+    //code block
+      break;
+    
+    case "multiplicar":
+    //code block
+      break;
+    
+    case "dividir":
+        //code block
+        break;
+
+        default:  //
+}
+
+
+
+
+
+const edadString = prompt("Ingresar numero");
+const edad = Number(edadString); 
+if(edad >0 && edad <= 6){
+    console.log("Guagua");
+}
+ else {
+    if( 6 < edad <== 18){
+        console.log("Guambra");
+    }else {
+        if ( 18 < edad <== 60);
+        console.log("longo");
+    }else{
+        if (edad > 60)
+        console.log("ruku");
+    }
+}
