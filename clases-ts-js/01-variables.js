@@ -18,11 +18,11 @@ boolean   -> verdadero/falso       Ej: true o false
 */ 
 
 //var edad = 19; // 
-let edad = 19;    // Mutable -> cambiar
+//let edad = 19;    // Mutable -> cambiar
 //const edad = 19;  // Inmutable  -> no cambiar
-const IVA = 12;
+//const IVA = 12;
 //IVA = 14; // no se puede reasignar un valor a una variable inmutable
-let sueldo = 0;
+//let sueldo = 0;
 // edad = 19  ->python
 //var edad: Integer = 30; -> kotlin Mutable
 //val edad: Integer = 30; -> kotlin Inmutable
