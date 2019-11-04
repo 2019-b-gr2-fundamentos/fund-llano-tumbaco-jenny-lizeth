@@ -1,8 +1,8 @@
 //Variables primitivas
 const numero = 10
 const decimal = 10.12;
-const respuesta TipoNumero = numero;
-console.log(typeof respuesta TipoNumero); 
+const respuestaTipoNumero = numero;
+console.log(typeof respuestaTipoNumero); 
 console.log(typeof decimal);
 //gestor de paquetes
 //de nodejs -> comunicarse con el repositorio -> descargar el "paquete"
