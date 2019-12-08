@@ -10,7 +10,7 @@ let analisisSocioeconomico = 0;
 console.log("Cuantos deberes tengo =(");
 do{
     numeroDeDeberes ++   //numerosDeDeberes = numerosDeDeberes + 1
-
+        
     if(numeroDeDeberes % 13 == 0){
         ingles = ingles + 1;  
     }else {
