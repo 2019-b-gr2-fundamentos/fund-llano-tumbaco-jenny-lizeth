@@ -49,6 +49,7 @@ function obtenerSegundaDimension(matrizUno:number[][]){
             }
         }
     }
+    return false;
 }
 //reutilizar el código, //verificar que todos los elementos de un arreglo son arreglos
 function verificarTodosLosElementosDeUnArregloSonArreglos(arreglo: any[]
