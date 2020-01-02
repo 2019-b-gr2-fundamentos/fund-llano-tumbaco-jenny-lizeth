@@ -8,12 +8,34 @@ var arregloMatriz = [
     [9],
     []
 ];
-var matrizDos = [
-    [1, 2],
-    [3, 4]
-];
 function compararMatriz(matrizUno, matrizDos //definir arreglo de arreglos
 ) {
+    var esValido = tieneMatricesIgualesDimensiones(matrizUno, matrizDos);
+    if (esValido) {
+        //comparar los valores
+        return tienenMismosValores(matrizUno, matrizDos);
+    }
+    else {
+        return false;
+    }
+}
+function tienenMismosValores(matrizUno, matrizDos) {
+    var primeraDimension = matrizUno.length;
+    var segundaDimension = matrizUno[0].length;
+    var banderaSonIguales = true; //bandera
+    for (var i = 0; i < primeraDimension; i++) {
+        for (var j = 0; j < segundaDimension; j++) {
+            var valorActualM1 = matrizUno[i][j];
+            var valorActualM2 = matrizDos[i][j];
+            if (valorActualM1 != valorActualM2) {
+                banderaSonIguales = false;
+            }
+        }
+    }
+    return banderaSonIguales;
+}
+//FUNCION PARA COMPARAR MATRICES
+function tieneMatricesIgualesDimensiones(matrizUno, matrizDos) {
     var matrizUnoPrimeraDimension = obtenerPrimeraDimension(matrizUno);
     var matrizUnoSegundaDimension = obtenerSegundaDimension(matrizUno);
     var matrizDosPrimeraDimension = obtenerPrimeraDimension(matrizDos);
@@ -22,7 +44,23 @@ function compararMatriz(matrizUno, matrizDos //definir arreglo de arreglos
     console.log(matrizUnoSegundaDimension);
     console.log(matrizDosPrimeraDimension);
     console.log(matrizDosSegundaDimension);
-    return true;
+    var noHayFalsos = matrizUnoPrimeraDimension != false &&
+        matrizUnoSegundaDimension != false &&
+        matrizDosPrimeraDimension != false &&
+        matrizDosSegundaDimension != false;
+    if (noHayFalsos) {
+        var tieneIgualesDimensiones = matrizUnoPrimeraDimension == matrizDosPrimeraDimension &&
+            matrizUnoSegundaDimension == matrizDosSegundaDimension;
+        if (tieneIgualesDimensiones) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    else {
+        return false;
+    }
 }
 //determinar las dimensiones
 function obtenerPrimeraDimension(matrizUno) {
@@ -81,22 +119,26 @@ function verificarTodosLosElementosDeUnArregloSonArreglos(arreglo) {
     return true;
 }
 function main() {
-    var matrizUno = [
-        [1, 2],
-        [3]
+    //2*3
+    var x = [
+        [1, 2, 3],
+        [3, 3, 3]
     ];
-    var matrizDos = [
-        [1, 2],
-        [3, 4]
+    var y = [
+        [1, 2, 3],
+        [3, 3, 3],
     ];
-    compararMatriz(matrizUno, matrizDos);
+    var resultado = compararMatriz(x, y);
+    console.log('Resultado: ', resultado);
 }
 main();
 /*n = 2, n=3
   1 2 3    2 3 4
   4 5 6    4 5 6
  * /
+
  
+
 //Sumar todas las filas y todas las columnas
 
 
