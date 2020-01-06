@@ -1,0 +1,16 @@
+{
+    "nombre":"Jenny",
+    "apellido":"Llano",
+    "edad": 19,
+    "casado": false,
+    "hijos": null,
+    "mascotas":["Mimi"],
+    "primo":{
+        "nombre":"Jenny",
+        "apellido":"Llano",
+        "edad": 19,
+        "casado": false,
+        "hijos": null,
+        "mascotas":["Mimi"]
+    }     
+}
