@@ -1,8 +1,9 @@
+
 %crear los registros de un arreglo
 
 arregloAnimales = [];
 arregloAnimales=string(arregloAnimales);
-animales = input('¿Cuántos tipos de animales deseas ingresar?: ');
+animales = input('Â¿CuÃ¡ntos tipos de animales deseas ingresar?: ');
 
 for n=1: animales
     tiposAnimales = input('Ingresa un tipo de animal: ', 's');
@@ -18,7 +19,7 @@ m =1;
 
 while m == 1
     
-des = input('¿Qué deseas realizar ahora: \n 1. Crear otro \n 2. Actualizar\n 3. Eliminar \n 4. Salir? \n >');
+des = input('Â¿QuÃ© deseas realizar ahora: \n 1. Crear otro \n 2. Actualizar\n 3. Eliminar \n 4. Salir? \n >');
 
 if des == 1
     
@@ -31,15 +32,15 @@ if des == 1
   disp(arregloAnimales);  %revisale
 else
     if des == 2
-       actualizar = input('Ingrese el índice del tipo de animal que se desea actualizar: ');
-       actualizacion = input('Escribe la actualización: ','s');
+       actualizar = input('Ingrese el Ã­ndice del tipo de animal que se desea actualizar: ');
+       actualizacion = input('Escribe la actualizaciÃ³n: ','s');
        str3 = string(actualizacion);
        arregloAnimales(actualizar)= actualizacion;
        
        disp(arregloAnimales);
     else
         if des == 3
-           i = input('Ingrese el índice del tipo de animal que se desea eliminar: ');
+           i = input('Ingrese el Ã­ndice del tipo de animal que se desea eliminar: ');
            arregloAnimales(i) = [];
            disp(arregloAnimales);
         else
@@ -54,3 +55,4 @@ else
 end
     
 end 
+
