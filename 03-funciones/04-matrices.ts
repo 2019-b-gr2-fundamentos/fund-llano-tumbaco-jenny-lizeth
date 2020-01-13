@@ -2,13 +2,14 @@
 //(la matriz es de dos dimensiones n*m) 
 //"n" y "m" pueden ser iguales o distintas
 
-const arregloMatriz = [
+/*const arregloMatriz = [
     [1,2],
     [3,4,5],
     [6,7,8],
     [9],
     []
 ];
+*/
 
 function compararMatriz(
     matrizUno: number[][], 
@@ -18,7 +19,7 @@ function compararMatriz(
             matrizUno,
             matrizDos
         );
-        
+
         if(esValido){
             //comparar los valores
             return tienenMismosValores(
@@ -87,6 +88,7 @@ function tieneMatricesIgualesDimensiones(
 function obtenerPrimeraDimension(matrizUno:number[][]):number | boolean{   //acepta numeros o falsos
     //VALIDACIONES, si el for pasa ya no tiene errores
         const esValido = verificarTodosLosElementosDeUnArregloSonArreglos(matrizUno);
+        
         if (esValido){
             const primeraDimensionArreglo = matrizUno.length;
             return primeraDimensionArreglo;
@@ -101,7 +103,7 @@ function obtenerSegundaDimension(matrizUno:number[][]): number|boolean{
     if (esValido){
     let longitudActualMaxima = 0;                     //auxiliar
     let longitudActualMinima = -1;                      //auxiliar
-    for(let i = 0; i <matrizUno.length; i++){             //validado 
+    for(let i = 0; i < matrizUno.length; i++){             //validado 
         const elementoActual = matrizUno [i];     // da un arreglo
         const longitudActual = elementoActual.length
         if(longitudActualMaxima < longitudActual){
@@ -167,8 +169,11 @@ main();
  * /
 
  
-
-//Sumar todas las filas y todas las columnas
+/*
+ 1) Escriba un programa que verifique que dos matrices son iguales
+ 2) Sumar todas las filas y columnas cada fila y cada columna debe darme un resultado    
+ 3) intercambiar las diagonales
+*/
 
 
 /*function verificarTodosLosElementosDeUnArregloSonArreglos(arreglo:any[]

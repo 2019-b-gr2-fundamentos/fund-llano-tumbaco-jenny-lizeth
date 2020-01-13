@@ -1,13 +1,14 @@
 //escriba una programa que verifique si dos matrices son iguales 
 //(la matriz es de dos dimensiones n*m) 
 //"n" y "m" pueden ser iguales o distintas
-var arregloMatriz = [
-    [1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
+/*const arregloMatriz = [
+    [1,2],
+    [3,4,5],
+    [6,7,8],
     [9],
     []
 ];
+*/
 function compararMatriz(matrizUno, matrizDos //definir arreglo de arreglos
 ) {
     var esValido = tieneMatricesIgualesDimensiones(matrizUno, matrizDos);
@@ -66,6 +67,7 @@ function tieneMatricesIgualesDimensiones(matrizUno, matrizDos) {
 function obtenerPrimeraDimension(matrizUno) {
     //VALIDACIONES, si el for pasa ya no tiene errores
     var esValido = verificarTodosLosElementosDeUnArregloSonArreglos(matrizUno);
+    console.log(esValido);
     if (esValido) {
         var primeraDimensionArreglo = matrizUno.length;
         return primeraDimensionArreglo;
@@ -138,10 +140,11 @@ main();
  * /
 
  
-
-//Sumar todas las filas y todas las columnas
-
-
+/*
+ 1) Escriba un programa que verifique que dos matrices son iguales
+ 2) Sumar todas las filas y columnas cada fila y cada columna debe darme un resultado
+ 3) intercambiar las diagonales
+*/
 /*function verificarTodosLosElementosDeUnArregloSonArreglos(arreglo:any[]
     ):boolean{
         for(let i=0;i<matrizUno.length;i++){
