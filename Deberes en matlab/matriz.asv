@@ -1,0 +1,27 @@
+
+function (i,j) = matriz(X)
+
+[i,j]= size(X);
+
+if i >= 0 && j >= 0
+    disp(i)
+    disp(j)
+else
+    disp('ERROR')
+end
+end
+
+function [k,l] = dimensionsegunda(Y)
+global Y
+Y(k,l)
+
+if k >= 0 & l >= 0
+    disp(k)
+    disp(l)
+else
+    disp('ERROR')
+end
+end
+
+
+

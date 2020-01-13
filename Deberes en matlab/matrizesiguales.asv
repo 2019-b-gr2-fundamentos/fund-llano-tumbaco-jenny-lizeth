@@ -1,0 +1,22 @@
+function R = compararmatriz(X,Y)
+if nargin < 2                    %%si hay no hay dos datos nargin envia error
+    error('Faltan datos')
+end
+
+[i,j]= size(X);
+[m,n] = size(Y);
+
+if j = m && i = n
+    for k = 1:i
+        for l = 1:j
+            
+        x = X(k,l);
+        y = Y(k,l);
+        end
+        
+        if x = y
+            disp ('son iguales');
+    end
+
+end
+
