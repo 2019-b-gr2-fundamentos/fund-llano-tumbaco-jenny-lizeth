@@ -49,6 +49,40 @@ function main() {
         .then()
         .catch(); //promesa//sincrona
 }
+function obtenerDatosAnimalPerritoSincrono() {
+    return __awaiter(this, void 0, void 0, function () {
+        var preguntas, RespuestaEdad;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    console.log('Inicio');
+                    preguntas = [
+                        {
+                            type: 'number',
+                            name: 'edad',
+                            message: 'Puedes darme tu edad?'
+                        },
+                        {
+                            type: 'text',
+                            name: 'nombre',
+                            message: 'Puedes darme tu nombre?'
+                        },
+                        {
+                            type: 'text',
+                            name: 'cedula',
+                            message: 'Puedes darme tu cedula?'
+                        }
+                    ];
+                    return [4 /*yield*/, prompts(preguntas)];
+                case 1:
+                    RespuestaEdad = _a.sent();
+                    console.log('Respuesta', RespuestaEdad);
+                    console.log('FIN');
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
 function obtenerDatosAnimalPerrito() {
     //Paradigma de programacion 
     //SINCRONO vs ASINCRONO
@@ -87,37 +121,3 @@ function obtenerDatosAnimalPerrito() {
     console.log('fin');
 }
 main();
-function obtenerDatosAnimalPerritoSincrono() {
-    return __awaiter(this, void 0, void 0, function () {
-        var preguntas, RespuestaEdad;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    console.log('Inicio');
-                    preguntas = [
-                        {
-                            type: 'number',
-                            name: 'edad',
-                            message: 'Puedes darme tu edad?'
-                        },
-                        {
-                            type: 'text',
-                            name: 'nombre',
-                            message: 'Puedes darme tu nombre?'
-                        },
-                        {
-                            type: 'text',
-                            name: 'cedula',
-                            message: 'Puedes darme tu cedula?'
-                        }
-                    ];
-                    return [4 /*yield*/, prompts(preguntas)];
-                case 1:
-                    RespuestaEdad = _a.sent();
-                    console.log('Respuesta', RespuestaEdad);
-                    console.log('FIN');
-                    return [2 /*return*/];
-            }
-        });
-    });
-}
