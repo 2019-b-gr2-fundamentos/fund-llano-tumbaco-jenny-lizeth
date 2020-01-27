@@ -21,7 +21,7 @@ async function main(){
         }
     ];
 
-    //DEBER -- esto poner en una funcion para que no se repita el codigo--LISTO CREAR
+    //DEBER -- esto poner en una funcion para que no se repita el codigo--LISTO CREAR.
     const respuestaEstudianteUno = await prompts(arregloPreguntas);
     const nuevoRegistroUno = {
         id: contador,
@@ -85,7 +85,7 @@ async function main(){
 
 }
 
-main().then().catch;
+main().then().catch();
 
 
 

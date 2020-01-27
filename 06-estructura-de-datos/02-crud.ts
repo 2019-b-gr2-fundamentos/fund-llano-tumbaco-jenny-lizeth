@@ -35,13 +35,14 @@ async function obtenerDatosAnimalPerritoSincrono(){
         name:'cedula',
         message:'Puedes darme tu cedula?'
         }
-    ]
+    ];
     const RespuestaEdad = await prompts(preguntas);
     console.log('Respuesta',RespuestaEdad);
     console.log('FIN');
 
 }
 
+main();
 
 function obtenerDatosAnimalPerrito(){    //ASINCRONA
     //Paradigma de programacion 

@@ -47,6 +47,7 @@ function main() {
                 case 0:
                     contador = 1;
                     contenidoArchivo = _02_leer_archivo_1.leerArchivo('./ejemplo.txt');
+                    console.log('contenidoArchivo', contenidoArchivo);
                     arregloCargadoDeArchivo = JSON.parse(contenidoArchivo);
                     arregloEstudiantes = arregloCargadoDeArchivo;
                     arregloPreguntas = [
