@@ -37,24 +37,45 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var _02_leer_archivo_1 = require("./02-leer-archivo");
+var _03_escribir_archivo_1 = require("./03-escribir-archivo");
 var prompts = require("prompts");
 //transformar un objeto en texto
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var contador, contenidoArchivo, arregloCargadoDeArchivo, arregloEstudiantes, arregloPreguntas, respuestaEstudianteUno, nuevoRegistroUno, respuestaEstudianteDos, nuevoRegistroDos, idABuscar, indiceEncontrado, nombreAEditar, buscar, estudianteEncontrado;
+        var contenidoArchivo, arregloCargadoDeArchivo, contador, minimoId, arregloEstudiantes, arregloPreguntas, respuestaEstudianteUno, nuevoRegistroUno, respuestaEstudianteDos, nuevoRegistroDos, idABuscar, indiceEncontrado, nombreAEditar, buscar, estudianteEncontrado, arregloTexto;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    contador = 1;
                     contenidoArchivo = _02_leer_archivo_1.leerArchivo('./ejemplo.txt');
                     console.log('contenidoArchivo', contenidoArchivo);
-                    arregloCargadoDeArchivo = JSON.parse(contenidoArchivo);
+                    try {
+                        arregloCargadoDeArchivo = JSON
+                            .parse(contenidoArchivo);
+                    }
+                    catch (error) {
+                        arregloCargadoDeArchivo = [];
+                        _;
+                        console.error('Error parseado archivo');
+                        //throw new Error("EL ARCHIVO ESTA MAL PARSEADO")
+                    }
+                    contador = 1;
+                    minimoId = -1;
+                    arregloCargadoDeArchivo
+                        .forEach(//NO ENVIA NADA Y NO DEVUELVE NADA
+                    //ITERAR
+                    function (valorActual) {
+                        var idActual = valorActual.id;
+                        if (idActual > minimoId) {
+                            minimoId = idActual;
+                        }
+                    });
+                    minimoId = minimoId + 1;
+                    contador = minimoId;
                     arregloEstudiantes = arregloCargadoDeArchivo;
-                    arregloPreguntas = [
-                        {
-                            type: 'text',
+                    arregloPreguntas = [{
+                            text: 'texto',
                             name: 'nombre',
-                            message: 'Ingresa nombre'
+                            message: 'dame el nombre?'
                         }
                     ];
                     return [4 /*yield*/, prompts(arregloPreguntas)];
@@ -115,12 +136,24 @@ function main() {
                         return valorActual.nombre == buscar.nombre;
                     });
                     console.log(estudianteEncontrado);
+                    arregloTexto = JSON.stringify(arregloEstudiantes);
+                    console.log(arregloTexto);
+                    _03_escribir_archivo_1.escribirArchivo('./ejemplo.txt', arregloTexto);
                     return [2 /*return*/];
             }
         });
     });
 }
-main().then()["catch"];
+main().then()["catch"]();
+//PARSEAR -> TEXTP -> eSCTRUCTURA EN MEMORIA
+/*
+{
+"nombre"
+}
+
+<Universal>
+<sdfdf> <ggf>
+*/
 /*function main(){
     const textoLeido = leerArchivo('./ejemplo.txt');
     const nuevoContenido = 'TENGO HAMBE :( \n';

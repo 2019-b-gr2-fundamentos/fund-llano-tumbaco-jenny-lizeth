@@ -1,27 +1,76 @@
 import { leerArchivo } from "./02-leer-archivo";
 import { escribirArchivo } from "./03-escribir-archivo";
-import * as prompts from 'prompts'; 
 import { Estudiante } from "./interfaces/estudiante.interface";
+import * as prompts from 'prompts'; 
+
 
 //transformar un objeto en texto
 
 async function main(){
-    let contador = 1;
+    
     const contenidoArchivo = leerArchivo(
         './ejemplo.txt'
     );
     console.log('contenidoArchivo',contenidoArchivo);
-    const arregloCargadoDeArchivo = JSON.parse(contenidoArchivo);
-    const arregloEstudiantes: Estudiante [] = arregloCargadoDeArchivo;
-    const arregloPreguntas = [
-        {
-            type: 'text',
-            name:'nombre',
-            message: 'Ingresa nombre'
+    
+   
+    
+        let arregloCargadoDeArchivo; // undifined
+        try{
+            arregloCargadoDeArchivo = JSON
+                .parse(contenidoArchivo);
+    }catch(error){
+            arregloCargadoDeArchivo =[];_
+            console.error('Error parseado archivo');
+        //throw new Error("EL ARCHIVO ESTA MAL PARSEADO")
+
+    }
+    /*
+    try{
+        console.log('1');
+        console.log('2');
+        console.log('3');
+        //console.log(""/0)
+        //sintaxis error
+        let a =1;
+        let a =2;         //ESTA MAL
+        console.log(1111111111111111111)    //infinito
+        
+        throw new ReferenceError("EL ARCHIVO ESTA MAL PARSEADO");
+        console.log('4');
+        console.log('5');
+    }catch (error){
+        console.log(error);
+        console.log(':3');
+    }
+
+    */
+   let contador = 1;
+    //OPERADORES
+    let minimoId = -1;
+    arregloCargadoDeArchivo
+        .forEach(                     //NO ENVIA NADA Y NO DEVUELVE NADA
+        //ITERAR
+        function(valorActual){
+            const idActual = valorActual.id;
+            if(idActual > minimoId){
+                minimoId = idActual
+            }
+
         }
-    ];
+    );
+    minimoId = minimoId + 1;
+    contador = minimoId
 
     //DEBER -- esto poner en una funcion para que no se repita el codigo--LISTO CREAR.
+    const arregloEstudiantes: Estudiante[] = arregloCargadoDeArchivo;
+    const arregloPreguntas = [{
+        text:'texto',
+        name:'nombre',
+        message:'dame el nombre?'
+    }
+    ];
+    
     const respuestaEstudianteUno = await prompts(arregloPreguntas);
     const nuevoRegistroUno = {
         id: contador,
@@ -81,6 +130,12 @@ async function main(){
         }
     );
     console.log(estudianteEncontrado);
+    const arregloTexto = JSON.stringify(arregloEstudiantes);   //stringify---cambia el arreglo a texto
+    console.log(arregloTexto);
+    escribirArchivo(
+        './ejemplo.txt',
+        arregloTexto
+    );
 
 
 }
@@ -89,7 +144,15 @@ main().then().catch();
 
 
 
+ //PARSEAR -> TEXTP -> eSCTRUCTURA EN MEMORIA
+    /*
+{
+    "nombre"
+}
 
+<Universal>
+<sdfdf> <ggf>
+*/
 
 
 /*function main(){
