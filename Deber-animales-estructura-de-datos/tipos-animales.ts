@@ -133,14 +133,43 @@ async function main(){
                         name: 'nombre',
                         message:'Ingrese el nuevo nombre'       
                         })
-                       
+                        
+                        
                         arregloAnimales[indiceEncontrado].nombre = nombreAEditar. nombre;
                         console.log(arregloAnimales);
                     
                     }else{
                         if(opcion == 3){
-                            
-
+                            const idABuscar = await prompts({
+                                type: 'number',
+                                name:'id',
+                                message: 'Ingresa el id del registro a Borrar'
+                                })
+                                const indiceEncontrado = arregloAnimales.findIndex(   //return CONDICION -
+                                    function (valorActual, indice, arreglo){
+                                        return valorActual.id==idABuscar.id;  //Nos devuelve el INDICE
+                                    }   
+                                    )
+                                    if(indiceEncontrado != -1 )
+                                    {
+                                        //console.log(indiceEncontrado);
+                                        arregloAnimales.splice(indiceEncontrado,1);
+                                        //console.log(arregloAnimales);
+                                        //console.log(arregloAnimales[0].id);
+                                        const Tm= arregloAnimales.length;
+                                        contador=arregloAnimales.length+1;
+                                        for(let i=0; i < Tm ; i++){
+                                            arregloAnimales[i].id=i+1;
+                                        }
+                                        //arregloAnimales[0].id=1000;
+                                        console.log(arregloAnimales);
+                                        
+                                    }
+                                    else{
+                                        console.log('El id no se encuentra');
+                                        console.log(arregloAnimales);
+                                    }
+                                
                         }else{
                             if(opcion == 4){
                                 const buscar = await prompts({
@@ -148,17 +177,19 @@ async function main(){
                                     name: 'nombre',
                                     message:'Buscar por ID o por nombre'
                                 });
-                                const animalEncontrado = arregloAnimales;
-                                .find(
+                                const animalEncontrado = arregloAnimales.find(
                                     function(valorActual){
                                         return valorActual.nombre == buscar.nombre;
                                     }
                                 );
+                                
                                 console.log(animalEncontrado);
+
                             }else{
                                 if(opcion == 5){
                                     let m = 4;
                                     console.log('FIN')
+                                    break;                               // par romper el ciclo
                                 }else{
                                     console.log('Error');
 

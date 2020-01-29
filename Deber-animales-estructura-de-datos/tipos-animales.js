@@ -39,7 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var prompts = require("prompts");
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var contador, arregloPreguntas, cantidad, cantidadUno, arregloAnimales, numeroVeces, RespuestaEstudiantes, nuevoRegistro, m, _loop_1;
+        var contador, arregloPreguntas, cantidad, cantidadUno, arregloAnimales, numeroVeces, RespuestaEstudiantes, nuevoRegistro, m, _loop_1, state_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -107,7 +107,7 @@ function main() {
                     console.log('Caracteríticas de los animales \n ', arregloAnimales);
                     m = 0;
                     _loop_1 = function () {
-                        var elijeOpcion, opcion, RespuestaEstudiantes, nuevoRegistro, idABuscar_1, indiceEncontrado, nombreAEditar, buscar_1, animalEncontrado, m_1;
+                        var elijeOpcion, opcion, RespuestaEstudiantes, nuevoRegistro, idABuscar_1, indiceEncontrado, nombreAEditar, idABuscar_2, indiceEncontrado, Tm, i, buscar_1, animalEncontrado, m_1;
                         return __generator(this, function (_a) {
                             switch (_a.label) {
                                 case 0:
@@ -141,7 +141,7 @@ function main() {
                                     contador = contador + 1;
                                     arregloAnimales.push(nuevoRegistro);
                                     console.log('Caracteríticas de los animales \n ', arregloAnimales);
-                                    return [3 /*break*/, 10];
+                                    return [3 /*break*/, 11];
                                 case 3:
                                     if (!(opcion == 2)) return [3 /*break*/, 6];
                                     return [4 /*yield*/, prompts({
@@ -165,35 +165,61 @@ function main() {
                                     nombreAEditar = _a.sent();
                                     arregloAnimales[indiceEncontrado].nombre = nombreAEditar.nombre;
                                     console.log(arregloAnimales);
-                                    return [3 /*break*/, 10];
+                                    return [3 /*break*/, 11];
                                 case 6:
-                                    if (!(opcion == 3)) return [3 /*break*/, 7];
-                                    return [3 /*break*/, 10];
+                                    if (!(opcion == 3)) return [3 /*break*/, 8];
+                                    return [4 /*yield*/, prompts({
+                                            type: 'number',
+                                            name: 'id',
+                                            message: 'Ingresa el id del registro a Borrar'
+                                        })];
                                 case 7:
-                                    if (!(opcion == 4)) return [3 /*break*/, 9];
+                                    idABuscar_2 = _a.sent();
+                                    indiceEncontrado = arregloAnimales.findIndex(//return CONDICION -
+                                    function (valorActual, indice, arreglo) {
+                                        return valorActual.id == idABuscar_2.id; //Nos devuelve el INDICE
+                                    });
+                                    if (indiceEncontrado != -1) {
+                                        //console.log(indiceEncontrado);
+                                        arregloAnimales.splice(indiceEncontrado, 1);
+                                        Tm = arregloAnimales.length;
+                                        contador = arregloAnimales.length + 1;
+                                        for (i = 0; i < Tm; i++) {
+                                            arregloAnimales[i].id = i + 1;
+                                        }
+                                        //arregloAnimales[0].id=1000;
+                                        console.log(arregloAnimales);
+                                    }
+                                    else {
+                                        console.log('El id no se encuentra');
+                                        console.log(arregloAnimales);
+                                    }
+                                    return [3 /*break*/, 11];
+                                case 8:
+                                    if (!(opcion == 4)) return [3 /*break*/, 10];
                                     return [4 /*yield*/, prompts({
                                             type: 'text',
                                             name: 'nombre',
                                             message: 'Buscar por ID o por nombre'
                                         })];
-                                case 8:
+                                case 9:
                                     buscar_1 = _a.sent();
-                                    animalEncontrado = arregloAnimales;
-                                    find(function (valorActual) {
+                                    animalEncontrado = arregloAnimales.find(function (valorActual) {
                                         return valorActual.nombre == buscar_1.nombre;
                                     });
                                     console.log(animalEncontrado);
-                                    return [3 /*break*/, 10];
-                                case 9:
+                                    return [3 /*break*/, 11];
+                                case 10:
                                     if (opcion == 5) {
                                         m_1 = 4;
                                         console.log('FIN');
+                                        return [2 /*return*/, "break"];
                                     }
                                     else {
                                         console.log('Error');
                                     }
-                                    _a.label = 10;
-                                case 10: return [2 /*return*/];
+                                    _a.label = 11;
+                                case 11: return [2 /*return*/];
                             }
                         });
                     };
@@ -202,7 +228,9 @@ function main() {
                     if (!(m < 2)) return [3 /*break*/, 8];
                     return [5 /*yield**/, _loop_1()];
                 case 7:
-                    _a.sent();
+                    state_1 = _a.sent();
+                    if (state_1 === "break")
+                        return [3 /*break*/, 8];
                     return [3 /*break*/, 6];
                 case 8:
                     console.log('fin');
