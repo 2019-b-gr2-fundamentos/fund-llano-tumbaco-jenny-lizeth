@@ -34,7 +34,7 @@ async function main(){
         //sintaxis error
         let a =1;
         let a =2;         //ESTA MAL
-        console.log(1111111111111111111)    //infinito
+        console.log(11111111111111111111111)    //infinito
         
         throw new ReferenceError("EL ARCHIVO ESTA MAL PARSEADO");
         console.log('4');
