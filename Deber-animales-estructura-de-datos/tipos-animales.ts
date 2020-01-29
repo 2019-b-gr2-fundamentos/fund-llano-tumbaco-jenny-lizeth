@@ -128,19 +128,119 @@ async function main(){
                         )
                         
                         console.log('Indice encontrado:', indiceEncontrado);
-                        const nombreAEditar = await prompts({
-                        type: 'text',
-                        name: 'nombre',
-                        message:'Ingrese el nuevo nombre'       
-                        })
-                       
-                        arregloAnimales[indiceEncontrado].nombre = nombreAEditar. nombre;
-                        console.log(arregloAnimales);
-                    
+                        
+                        let n=0;
+                        while(n<1){ 
+                            console.log('escriba el numero de la opcion que desea actualizar');
+                            console.log('1. Nombre');
+                            console.log('2. Tipo');
+                            console.log('3. Habitat');
+                            console.log('4. Alimentacion');
+                            console.log('5. Reproducciom');
+                            console.log('6. Salir');
+            
+                            const elijeOpcion = await prompts({
+                            type: 'number',
+                            name:'numero',
+                            message:'Cual eliges?',
+                            validate: value => value < 0? `Debe ser un numero positivo`: true
+                            });
+        
+                            const opcion = elijeOpcion.numero;
+
+                            if (opcion == 1){
+                                const nombreAEditar = await prompts({
+                                    type: 'text',
+                                    name: 'nombre',
+                                    message:'Ingrese el nuevo nombre'       
+                                    })
+                                    arregloAnimales[indiceEncontrado].nombre = nombreAEditar. nombre;
+                                    console.log(arregloAnimales);
+
+                            }else{
+                                if (opcion == 2){
+                                    const tipoAEditar = await prompts({
+                                        type: 'text',
+                                        name: 'tipo',
+                                        message:'Ingrese el nuevo tipo'       
+                                        })
+                                        arregloAnimales[indiceEncontrado].tipo = tipoAEditar. tipo;
+                                        console.log(arregloAnimales);
+                                        }else{
+                                            if (opcion == 3){
+                                                const habitatAEditar = await prompts({
+                                                    type: 'text',
+                                                    name: 'habitat',
+                                                    message:'Ingrese el nuevo habitat'       
+                                                    })
+                                                    arregloAnimales[indiceEncontrado].habitat = habitatAEditar. habitat;
+                                                    console.log(arregloAnimales);
+                                                    }else{
+                                                        if (opcion == 4){
+                                                            const alimentacionAEditar = await prompts({
+                                                                type: 'text',
+                                                                name: 'alimentacion',
+                                                                message:'Ingrese el nuevo tipo de alimentacion'       
+                                                                })
+                                                                arregloAnimales[indiceEncontrado].alimentacion = alimentacionAEditar. alimentacion;
+                                                                console.log(arregloAnimales);
+                                                                }else{
+                                                                    if (opcion == 5){
+                                                                        const reproduccionAEditar = await prompts({
+                                                                            type: 'text',
+                                                                            name: 'reproduccion',
+                                                                            message:'Ingrese el nuevo tipo de reproduccion'       
+                                                                            })
+                                                                            arregloAnimales[indiceEncontrado].reproduccion = reproduccionAEditar. reproduccion;
+                                                                            console.log(arregloAnimales);
+                                                                            }else{
+                                                                                if (opcion == 6){
+                                                                                    let n = 2
+                                                                                    console.log('listo');
+                                                                                    break;
+                                                                                }else{
+                                                                                    console.log('Error');
+                                                                                }
+                                                                            }
+                                                                }
+                                                    }
+
+                                            }
+                                   }     
+                            }
+
                     }else{
                         if(opcion == 3){
-                            
-
+                            const idABuscar = await prompts({
+                                type: 'number',
+                                name:'id',
+                                message: 'Ingresa el id del registro a Borrar'
+                                })
+                                const indiceEncontrado = arregloAnimales.findIndex(   //return CONDICION -
+                                    function (valorActual, indice, arreglo){
+                                        return valorActual.id==idABuscar.id;  //Nos devuelve el INDICE
+                                    }   
+                                    )
+                                    if(indiceEncontrado != -1 )
+                                    {
+                                        //console.log(indiceEncontrado);
+                                        arregloAnimales.splice(indiceEncontrado,1);
+                                        //console.log(arregloAnimales);
+                                        //console.log(arregloAnimales[0].id);
+                                        const Tm= arregloAnimales.length;
+                                        contador=arregloAnimales.length+1;
+                                        for(let i=0; i < Tm ; i++){
+                                            arregloAnimales[i].id=i+1;
+                                        }
+                                        //arregloAnimales[0].id=1000;
+                                        console.log(arregloAnimales);
+                                        
+                                    }
+                                    else{
+                                        console.log('El id no se encuentra');
+                                        console.log(arregloAnimales);
+                                    }
+                                
                         }else{
                             if(opcion == 4){
                                 const buscar = await prompts({
@@ -148,17 +248,19 @@ async function main(){
                                     name: 'nombre',
                                     message:'Buscar por ID o por nombre'
                                 });
-                                const animalEncontrado = arregloAnimales;
-                                .find(
+                                const animalEncontrado = arregloAnimales.find(
                                     function(valorActual){
                                         return valorActual.nombre == buscar.nombre;
                                     }
                                 );
+                                
                                 console.log(animalEncontrado);
+
                             }else{
                                 if(opcion == 5){
                                     let m = 4;
                                     console.log('FIN')
+                                    break;                               // par romper el ciclo
                                 }else{
                                     console.log('Error');
 

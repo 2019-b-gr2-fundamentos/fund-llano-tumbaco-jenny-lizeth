@@ -20,7 +20,7 @@ async function main(){
             arregloCargadoDeArchivo = JSON
                 .parse(contenidoArchivo);
     }catch(error){
-            arregloCargadoDeArchivo =[];_
+            arregloCargadoDeArchivo =[];
             console.error('Error parseado archivo');
         //throw new Error("EL ARCHIVO ESTA MAL PARSEADO")
 
