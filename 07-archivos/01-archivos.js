@@ -120,7 +120,7 @@ function main() {
         });
     });
 }
-main().then()["catch"];
+main().then()["catch"]();
 /*function main(){
     const textoLeido = leerArchivo('./ejemplo.txt');
     const nuevoContenido = 'TENGO HAMBE :( \n';
