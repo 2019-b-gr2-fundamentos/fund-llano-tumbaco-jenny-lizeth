@@ -145,6 +145,7 @@ function main() {
     });
 }
 main().then()["catch"]();
+<<<<<<< HEAD
 //PARSEAR -> TEXTP -> eSCTRUCTURA EN MEMORIA
 /*
 {
@@ -154,6 +155,8 @@ main().then()["catch"]();
 <Universal>
 <sdfdf> <ggf>
 */
+=======
+>>>>>>> b3ca6fddfaf1b6073c581cab0ca4b46e42b13a94
 /*function main(){
     const textoLeido = leerArchivo('./ejemplo.txt');
     const nuevoContenido = 'TENGO HAMBE :( \n';
