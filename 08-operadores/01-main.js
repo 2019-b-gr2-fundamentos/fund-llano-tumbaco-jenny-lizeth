@@ -1,3 +1,7 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var _02_filter_1 = require("./02-filter");
+var _03_map_1 = require("./03-map");
 function main() {
     var arregloEstudiantes = [
         { id: 1, nombre: "Adrian", nota: 7 },
@@ -78,6 +82,27 @@ function main() {
     );
     console.log('respuestaReduce', respuestaReduce);
     console.log('Promedio', respuestaReduce / arregloEstudiantes.length); // para dividir por la cantidad de elemntos del arreglo
+    console.log('arregloEstudiantes', arregloEstudiantes);
+    //operador filter--desarrollado
+    var respuestaFilterNuestro = _02_filter_1.filter(arregloEstudiantes, function (valorActual, i, arr) {
+        console.log('valor: ', valorActual);
+        console.log('indice: ', i);
+        console.log('arreglo:', arr);
+        return valorActual.nota >= 7;
+    });
+    console.log('respuestaFilterNuestro', respuestaFilterNuestro);
+    console.log('arregloEstudiante', arregloEstudiantes);
+    //operador map --desarrollado
+    var respuestaMapNuestro = _03_map_1.map(arregloEstudiantes, function (valorActual, i, arr) {
+        var nuevoObjeto = {
+            id: valorActual.id,
+            nombre: valorActual.nombre,
+            //nota:valorActual.nota,
+            nota20: valorActual.nota * 2
+        };
+        return nuevoObjeto;
+    });
+    console.log('respuestaMapNuestro', respuestaMapNuestro);
     console.log('arregloEstudiantes', arregloEstudiantes);
 }
 main();

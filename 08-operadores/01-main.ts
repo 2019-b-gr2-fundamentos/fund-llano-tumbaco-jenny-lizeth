@@ -1,3 +1,6 @@
+import { filter } from "./02-filter";
+import { map } from "./03-map";
+
 function main(){
 
     const arregloEstudiantes = [
@@ -19,6 +22,7 @@ function main(){
             }
         );
         console.log(respuestaForEach);  // undefined
+
 
         //MAP -> TRANSFORMAR EL ARREGLO (mUTAR EL ARREGLO)
         //RECIBIR----> Nuevo arreglo con valores modificado
@@ -101,5 +105,43 @@ function main(){
                             console.log('respuestaReduce',respuestaReduce);
                             console.log('Promedio', respuestaReduce/arregloEstudiantes.length);   // para dividir por la cantidad de elemntos del arreglo
                             console.log('arregloEstudiantes',arregloEstudiantes);
+
+
+
+                            //operador filter--desarrollado
+
+                            const respuestaFilterNuestro = filter(
+                                arregloEstudiantes,
+                                function(valorActual, i, arr){
+                                    console.log('valor: ',valorActual);
+                                    console.log('indice: ', i);
+                                    console.log('arreglo:', arr);
+                                    return valorActual.nota >= 7;
+                                }
+                            );
+                            console.log('respuestaFilterNuestro', respuestaFilterNuestro);
+                            console.log('arregloEstudiante',arregloEstudiantes);
+
+                            //operador map --desarrollado
+                            const respuestaMapNuestro = map(
+                                arregloEstudiantes,
+                                function(valorActual,i,arr){
+                                    const nuevoObjeto={
+                                        id:valorActual.id,
+                                        nombre: valorActual.nombre,
+                                        //nota:valorActual.nota,
+                                        nota20: valorActual.nota*2
+                                    };
+                                    return  nuevoObjeto
+                
+                                }
+                            );
+                            console.log('respuestaMapNuestro', respuestaMapNuestro);
+                            console.log('arregloEstudiantes',arregloEstudiantes);
+
+                            //operador FOREACH--DESARROLLADO
+                            
 }
 main();
+
+ 
