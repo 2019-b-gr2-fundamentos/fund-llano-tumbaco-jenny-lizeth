@@ -13,7 +13,15 @@ async function main(){
     );
     console.log('contenidoArchivo',contenidoArchivo);
     
-   
+    // PARSEAR -> TEXTO -> Estructura en memoria
+    /*
+    {
+        "nombre":"Adrian"
+    }
+    <universidad>
+        <factultad></facultad>
+    </universidad>
+    */
     
         let arregloCargadoDeArchivo; // undifined
         try{
@@ -25,27 +33,8 @@ async function main(){
         //throw new Error("EL ARCHIVO ESTA MAL PARSEADO")
 
     }
-    /*
-    try{
-        console.log('1');
-        console.log('2');
-        console.log('3');
-        //console.log(""/0)
-        //sintaxis error
-        let a =1;
-        let a =2;         //ESTA MAL
-        console.log(11111111111111111111111)    //infinito
-        
-        throw new ReferenceError("EL ARCHIVO ESTA MAL PARSEADO");
-        console.log('4');
-        console.log('5');
-    }catch (error){
-        console.log(error);
-        console.log(':3');
-    }
-
-    */
-   let contador = 1;
+    
+   let contador = 3;
     //OPERADORES
     let minimoId = -1;
     arregloCargadoDeArchivo
@@ -62,12 +51,31 @@ async function main(){
     minimoId = minimoId + 1;
     contador = minimoId
 
+    /*try{
+        console.log('1');
+        console.log('2');
+        console.log('3');
+        // Syntax Error}
+        let a = 1;
+        let a = 2;
+        let a = 3; // ESTA MAL!
+        console.log(123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123)
+        throw new ReferenceError("EL ARCHIVO ESTA MAL PARSEADO");
+        console.log('4');
+        console.log('5');
+    }catch(error){
+        console.log(error);
+        console.log(':3')
+    }
+    */
+
     //DEBER -- esto poner en una funcion para que no se repita el codigo--LISTO CREAR.
     const arregloEstudiantes: Estudiante[] = arregloCargadoDeArchivo;
-    const arregloPreguntas = [{
-        text:'texto',
+    const arregloPreguntas = [
+        {
+        type:'text',
         name:'nombre',
-        message:'dame el nombre?'
+        message:'Ingresa tu nombre'
     }
     ];
     
@@ -82,7 +90,7 @@ async function main(){
     const respuestaEstudianteDos = await prompts(arregloPreguntas);
     const nuevoRegistroDos = {
         id: contador,
-        nombre: respuestaEstudianteUno.nombre               //.nombre---> para poder acceder 
+        nombre: respuestaEstudianteDos.nombre               //.nombre---> para poder acceder 
     };
     contador = contador + 1
     arregloEstudiantes.push(nuevoRegistroDos)

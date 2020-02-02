@@ -1,5 +1,10 @@
 import { filter } from "./02-filter";
 import { map } from "./03-map";
+import { forEach } from './04-forEach';
+import { some } from "./05-some";
+import { every } from './06-every';
+import { reduce } from "./07-reduce";
+
 
 function main(){
 
@@ -17,8 +22,7 @@ function main(){
     const respuestaForEach = arregloEstudiantes
         .forEach(
             function(valorActual,indice,arreglo){
-                console.log(valorActual.nota);
-                //valorActual.nota20 = valorActual.nota*2          ----> a todos les multiplica *2
+                console.log(valorActual.nota);          
             }
         );
         console.log(respuestaForEach);  // undefined
@@ -33,7 +37,7 @@ function main(){
                         id:valorActual.id,
                         nombre: valorActual.nombre,
                         //nota:valorActual.nota,
-                        nota20: valorActual.nota*2
+                        nota20: valorActual.nota*2                  // ----> a todos les multiplica *2
                     };
                     return  nuevoObjeto
 
@@ -139,8 +143,52 @@ function main(){
                             console.log('respuestaMapNuestro', respuestaMapNuestro);
                             console.log('arregloEstudiantes',arregloEstudiantes);
 
-                            //operador FOREACH--DESARROLLADO
-                            
+                            //operador FOREACH--DESARROLLADo
+                            const respuestaForEachNuestro = forEach(
+                                arregloEstudiantes,
+                                function(valorActual,indice,arreglo){
+                                    console.log(valorActual.nota);
+                                }
+                                
+                            );
+                                console.log(respuestaForEachNuestro);
+
+                                //operador SOME--DESARROLLADO
+                                const respuestaSomeNuestro = some(
+                                    arregloEstudiantes,
+                                    function(valorActual,i,arreglo){
+                                        const condicion = valorActual.nota < 2;
+                                        return condicion;
+
+                                    }
+                                );
+                                    console.log('respuestaSomeNuestro', respuestaSomeNuestro);
+                                    console.log('arregloEstudiantes',arregloEstudiantes);
+
+                                    //operador EVERY--DESARROLLADO
+                                    const respuestaEveryNuestro = every(
+                                        arregloEstudiantes,
+                                        function(valorActual,i,arreglo){
+                                            const condicion = valorActual.nota < 10;
+                                            return condicion;
+    
+                                        }
+                                    );
+                                        console.log('respuestaEveryNuestro', respuestaEveryNuestro);
+                                        console.log('arregloEstudiantes',arregloEstudiantes);
+
+                                        //operador REDUCE--DESARROLLADO
+                                        const respuestaReduceNuestro = reduce(
+                                            arregloEstudiantes,
+                                            function(acumulador,valorActual, i, arreglo){    //funcion
+                                                const calculo = acumulador + valorActual.nota;
+                                                return calculo;
+                                            },
+                                            0 //valor Inicial del acumulador
+                                        );
+                                        console.log('respuestaReduce',respuestaReduceNuestro);
+                                        console.log('Promedio', respuestaReduceNuestro/arregloEstudiantes.length);   // para dividir por la cantidad de elemntos del arreglo
+                                        console.log('arregloEstudiantes',arregloEstudiantes);
 }
 main();
 

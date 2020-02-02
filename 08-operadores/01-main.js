@@ -2,6 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var _02_filter_1 = require("./02-filter");
 var _03_map_1 = require("./03-map");
+var _04_forEach_1 = require("./04-forEach");
+var _05_some_1 = require("./05-some");
+var _06_every_1 = require("./06-every");
+var _07_reduce_1 = require("./07-reduce");
 function main() {
     var arregloEstudiantes = [
         { id: 1, nombre: "Adrian", nota: 7 },
@@ -16,7 +20,6 @@ function main() {
     var respuestaForEach = arregloEstudiantes
         .forEach(function (valorActual, indice, arreglo) {
         console.log(valorActual.nota);
-        //valorActual.nota20 = valorActual.nota*2          ----> a todos les multiplica *2
     });
     console.log(respuestaForEach); // undefined
     //MAP -> TRANSFORMAR EL ARREGLO (mUTAR EL ARREGLO)
@@ -27,7 +30,7 @@ function main() {
             id: valorActual.id,
             nombre: valorActual.nombre,
             //nota:valorActual.nota,
-            nota20: valorActual.nota * 2
+            nota20: valorActual.nota * 2 // ----> a todos les multiplica *2
         };
         return nuevoObjeto;
     });
@@ -103,6 +106,34 @@ function main() {
         return nuevoObjeto;
     });
     console.log('respuestaMapNuestro', respuestaMapNuestro);
+    console.log('arregloEstudiantes', arregloEstudiantes);
+    //operador FOREACH--DESARROLLADo
+    var respuestaForEachNuestro = _04_forEach_1.forEach(arregloEstudiantes, function (valorActual, indice, arreglo) {
+        console.log(valorActual.nota);
+    });
+    console.log(respuestaForEachNuestro);
+    //operador SOME--DESARROLLADO
+    var respuestaSomeNuestro = _05_some_1.some(arregloEstudiantes, function (valorActual, i, arreglo) {
+        var condicion = valorActual.nota < 2;
+        return condicion;
+    });
+    console.log('respuestaSomeNuestro', respuestaSomeNuestro);
+    console.log('arregloEstudiantes', arregloEstudiantes);
+    //operador EVERY--DESARROLLADO
+    var respuestaEveryNuestro = _06_every_1.every(arregloEstudiantes, function (valorActual, i, arreglo) {
+        var condicion = valorActual.nota < 10;
+        return condicion;
+    });
+    console.log('respuestaEveryNuestro', respuestaEveryNuestro);
+    console.log('arregloEstudiantes', arregloEstudiantes);
+    //operador REDUCE--DESARROLLADO
+    var respuestaReduceNuestro = _07_reduce_1.reduce(arregloEstudiantes, function (acumulador, valorActual, i, arreglo) {
+        var calculo = acumulador + valorActual.nota;
+        return calculo;
+    }, 0 //valor Inicial del acumulador
+    );
+    console.log('respuestaReduce', respuestaReduceNuestro);
+    console.log('Promedio', respuestaReduceNuestro / arregloEstudiantes.length); // para dividir por la cantidad de elemntos del arreglo
     console.log('arregloEstudiantes', arregloEstudiantes);
 }
 main();
