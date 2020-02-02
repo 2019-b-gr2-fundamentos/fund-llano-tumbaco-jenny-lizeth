@@ -1,0 +1,1 @@
+[{"id":1,"nombre":"dddddd","tipo":"bgf","habitat":"dfbg","alimentacion":"fg","reproduccion":"bgf"},{"id":2,"nombre":"aaaaaaaaaa","tipo":"g","habitat":"f","alimentacion":"d","reproduccion":"s"},{"id":3,"nombre":"d","tipo":"sd","habitat":"fd","alimentacion":"fd","reproduccion":"fd"},{"id":4,"nombre":"f","tipo":"dsf","habitat":"d","alimentacion":"d","reproduccion":"d"}]

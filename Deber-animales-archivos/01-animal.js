@@ -42,11 +42,11 @@ var prompts = require("prompts");
 //transformar un objeto en texto
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var contenidoArchivo, arregloCargadoDeArchivo, contador, minimoId, arregloEstudiantes, arregloPreguntas, respuestaEstudianteUno, nuevoRegistroUno, respuestaEstudianteDos, nuevoRegistroDos, idABuscar, indiceEncontrado, nombreAEditar, buscar, estudianteEncontrado, arregloTexto;
+        var contenidoArchivo, arregloCargadoDeArchivo, cantidad, contador, minimoId, arregloAnimales, arregloPreguntas, cantidadUno, numeroVeces, RespuestaEstudiantes, nuevoRegistro, idABuscar, indiceEncontrado, nombreAEditar, buscar, animalEncontrado, arregloTexto, idABuscar2, indiceEncontrado2, Tm, i, arregloText;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    contenidoArchivo = _02_leer_archivo_1.leerArchivo('./ejemplo.txt');
+                    contenidoArchivo = _02_leer_archivo_1.leerArchivo('./texto.txt');
                     console.log('contenidoArchivo', contenidoArchivo);
                     try {
                         arregloCargadoDeArchivo = JSON
@@ -57,7 +57,15 @@ function main() {
                         console.error('Error parseado archivo');
                         //throw new Error("EL ARCHIVO ESTA MAL PARSEADO")
                     }
-                    contador = 3;
+                    return [4 /*yield*/, prompts({
+                            type: 'number',
+                            name: 'numero',
+                            message: 'Cuantos animales quieres ingresar?',
+                            validate: function (value) { return value < 0 ? "Debe ser un numero positivo" : true; }
+                        })];
+                case 1:
+                    cantidad = _a.sent();
+                    contador = 1;
                     minimoId = -1;
                     arregloCargadoDeArchivo
                         .forEach(//NO ENVIA NADA Y NO DEVUELVE NADA
@@ -70,46 +78,67 @@ function main() {
                     });
                     minimoId = minimoId + 1;
                     contador = minimoId;
-                    arregloEstudiantes = arregloCargadoDeArchivo;
+                    arregloAnimales = arregloCargadoDeArchivo;
                     arregloPreguntas = [
                         {
                             type: 'text',
                             name: 'nombre',
-                            message: 'Ingresa tu nombre'
+                            message: 'Ingresa nombre animal'
+                        },
+                        {
+                            type: 'text',
+                            name: 'tipo',
+                            message: 'Ingresa su clasificacion segun su estructura osea'
+                        },
+                        {
+                            type: 'text',
+                            name: 'habitat',
+                            message: 'Donde vive?'
+                        },
+                        {
+                            type: 'text',
+                            name: 'alimentacion',
+                            message: 'Ingresa su tipo de alimentacion'
+                        },
+                        {
+                            type: 'text',
+                            name: 'reproduccion',
+                            message: 'Ingresa el tipo de repoducción'
                         }
                     ];
-                    return [4 /*yield*/, prompts(arregloPreguntas)];
-                case 1:
-                    respuestaEstudianteUno = _a.sent();
-                    nuevoRegistroUno = {
-                        id: contador,
-                        nombre: respuestaEstudianteUno.nombre //.nombre---> para poder acceder 
-                    };
-                    contador = contador + 1;
-                    arregloEstudiantes.push(nuevoRegistroUno);
-                    return [4 /*yield*/, prompts(arregloPreguntas)];
+                    cantidadUno = cantidad.numero;
+                    numeroVeces = 0;
+                    _a.label = 2;
                 case 2:
-                    respuestaEstudianteDos = _a.sent();
-                    nuevoRegistroDos = {
+                    if (!(numeroVeces < cantidadUno)) return [3 /*break*/, 5];
+                    return [4 /*yield*/, prompts(arregloPreguntas)];
+                case 3:
+                    RespuestaEstudiantes = _a.sent();
+                    nuevoRegistro = {
                         id: contador,
-                        nombre: respuestaEstudianteDos.nombre //.nombre---> para poder acceder 
+                        nombre: RespuestaEstudiantes.nombre,
+                        tipo: RespuestaEstudiantes.tipo,
+                        habitat: RespuestaEstudiantes.habitat,
+                        alimentacion: RespuestaEstudiantes.alimentacion,
+                        reproduccion: RespuestaEstudiantes.reproduccion
                     };
                     contador = contador + 1;
-                    arregloEstudiantes.push(nuevoRegistroDos);
-                    console.log('Cual usuario quieres editar?');
-                    console.log(arregloEstudiantes);
+                    arregloAnimales.push(nuevoRegistro);
+                    _a.label = 4;
+                case 4:
+                    numeroVeces++;
+                    return [3 /*break*/, 2];
+                case 5:
+                    console.log('Caracteríticas de los animales \n ', arregloAnimales);
                     return [4 /*yield*/, prompts({
                             type: 'number',
                             name: 'id',
                             message: 'Ingresa el id del registro a Editar'
                         })];
-                case 3:
+                case 6:
                     idABuscar = _a.sent();
-                    indiceEncontrado = arregloEstudiantes.findIndex(//return CONDICION -
+                    indiceEncontrado = arregloAnimales.findIndex(//return CONDICION -
                     function (valorActual, indice, arreglo) {
-                        //console.log(valorActual);
-                        //console.log(indice);
-                        //console.log(arreglo);
                         return valorActual.id == idABuscar.id; //Nos devuelve el INDICE
                     } //  Si encuentra nos devuelve el indice
                     // no encuentra
@@ -120,46 +149,53 @@ function main() {
                             name: 'nombre',
                             message: 'Ingrese el nuevo nombre'
                         })];
-                case 4:
+                case 7:
                     nombreAEditar = _a.sent();
-                    arregloEstudiantes[indiceEncontrado].nombre = nombreAEditar.nombre;
-                    console.log(arregloEstudiantes);
+                    arregloAnimales[indiceEncontrado].nombre = nombreAEditar.nombre;
+                    console.log(arregloAnimales);
                     return [4 /*yield*/, prompts({
                             type: 'text',
                             name: 'nombre',
                             message: 'Buscar por ID o por nombre'
                         })];
-                case 5:
+                case 8:
                     buscar = _a.sent();
-                    estudianteEncontrado = arregloEstudiantes
+                    animalEncontrado = arregloAnimales
                         .find(function (valorActual) {
                         return valorActual.nombre == buscar.nombre;
                     });
-                    console.log(estudianteEncontrado);
-                    arregloTexto = JSON.stringify(arregloEstudiantes);
+                    console.log(animalEncontrado);
+                    arregloTexto = JSON.stringify(arregloAnimales);
                     console.log(arregloTexto);
                     _03_escribir_archivo_1.escribirArchivo('./ejemplo.txt', arregloTexto);
+                    return [4 /*yield*/, prompts({
+                            type: 'number',
+                            name: 'id',
+                            message: 'Ingresa el id del registro a Borrar'
+                        })];
+                case 9:
+                    idABuscar2 = _a.sent();
+                    indiceEncontrado2 = arregloAnimales.findIndex(//return CONDICION -
+                    function (valorActual, indice, arreglo) {
+                        return valorActual.id == idABuscar2.id; //Nos devuelve el INDICE
+                    });
+                    if (indiceEncontrado2 != -1) {
+                        //console.log(indiceEncontrado);
+                        arregloAnimales.splice(indiceEncontrado2, 1);
+                        Tm = arregloAnimales.length;
+                        contador = arregloAnimales.length + 1;
+                        for (i = 0; i < Tm; i++) {
+                            arregloAnimales[i].id = i + 1;
+                        }
+                        //arregloAnimales[0].id=1000;
+                        console.log(arregloAnimales);
+                    }
+                    arregloText = JSON.stringify(arregloAnimales);
+                    console.log(arregloText);
+                    _03_escribir_archivo_1.escribirArchivo('./texto.txt', arregloText);
                     return [2 /*return*/];
             }
         });
     });
 }
 main().then()["catch"]();
-//PARSEAR -> TEXTP -> eSCTRUCTURA EN MEMORIA
-/*
-{
-"nombre"
-}
-
-<Universal>
-<sdfdf> <ggf>
-*/
-/*function main(){
-    const textoLeido = leerArchivo('./ejemplo.txt');
-    const nuevoContenido = 'TENGO HAMBE :( \n';
-    escribirArchivo('./ejemplo.txt','');  //pone el nuevo contenido
-    console.log(textoLeido + nuevoContenido);
-}
-main();
-
-//escribirArchivo('');  // para que se limpie el archivo*/ 
