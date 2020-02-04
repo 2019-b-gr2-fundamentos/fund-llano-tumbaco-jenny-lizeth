@@ -1,4 +1,5 @@
-import { restar } from "./01-imagen";
-const numUno = 1;
-const numDos = 2;
-restar
+import { Uno } from "./01-imagen";
+
+var foo = Uno("")
+
+console.log(foo);
