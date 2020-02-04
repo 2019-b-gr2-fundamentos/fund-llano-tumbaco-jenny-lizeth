@@ -1,5 +1,5 @@
 export function map(
-    arreglo: any[],
+    arregloOriginal: any[],                 //Reviso el original
     funcion:(
         valorActual: any,
         indice?: number,
@@ -7,11 +7,14 @@ export function map(
     
     ):any[]{
         const arregloACambiar = [];
+        const arreglo =[...arregloOriginal];     //Le hago un clon
+
         for(let i = 0; i < arreglo.length; i++){
+            const clon = [...arreglo];           //Crear clon por iteracion
             const respuestaMap = funcion (
-                arreglo[i],
+                clon[i],
                 i,
-                arreglo,
+                clon,              //clon del clon pata que juegue el programador
             );
                 
                 arregloACambiar.push(respuestaMap);
