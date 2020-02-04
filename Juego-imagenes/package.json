@@ -1,0 +1,11 @@
+{
+  "name": "juego-imagenes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "(tsc borrador.ts --target ES5 || echo) && node borrador.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
