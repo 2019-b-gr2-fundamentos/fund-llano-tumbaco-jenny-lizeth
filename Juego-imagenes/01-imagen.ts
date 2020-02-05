@@ -1,7 +1,7 @@
-export function Uno(firstName: string) {
-    return firstName + ('           *********\n          **********\n         ***********\n        ************\n       ****** ******\n      ******  ******\n     ******   ******\n    ******    ******\n   ******     ******\n              ******\n              ******\n              ******\n              ******\n              ******\n              ******\n              ******\n              ******');
-    }
+import { trebol } from "./02-trebol";
 
-export function Dos(firstName: string){
-    return (firstName + ('')
-}
+const tre = trebol("");
+
+export function Uno(firstName: string) {
+    return firstName + (tre+'           *********\n          **********\n         ***********\n        ************\n       ****** ******\n      ******  ******\n     ******   ******\n    ******    ******\n   ******     ******\n              ******\n              ******\n              ******\n              ******\n              ******\n              ******\n              ******\n              ******' + tre);
+    }
