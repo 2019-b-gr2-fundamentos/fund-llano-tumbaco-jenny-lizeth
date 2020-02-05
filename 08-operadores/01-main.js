@@ -132,7 +132,7 @@ function main() {
         return calculo;
     }, 0 //valor Inicial del acumulador
     );
-    console.log('respuestaReduce', respuestaReduceNuestro);
+    console.log('respuestaReduceNuestro', respuestaReduceNuestro);
     console.log('Promedio', respuestaReduceNuestro / arregloEstudiantes.length); // para dividir por la cantidad de elemntos del arreglo
     console.log('arregloEstudiantes', arregloEstudiantes);
 }
